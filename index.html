@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arya - Official AI Assistant | Chanakya University</title>
+    <meta name="description" content="Meet Arya, the official AI assistant for Chanakya University, Bengaluru. Get information on admissions, courses, scholarships, placements, campus life, hostels, and fees.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-logo">
+                    <div class="logo-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="brand-text">
+                        <h2>Chanakya</h2>
+                        <span>UNIVERSITY</span>
+                    </div>
+                </div>
+                <button class="sidebar-close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="assistant-card">
+                <div class="avatar-wrapper">
+                    <img src="assets/arya_avatar.jpg" alt="Arya AI Assistant" class="arya-avatar">
+                    <span class="online-indicator"></span>
+                </div>
+                <div class="assistant-info">
+                    <h3>Arya</h3>
+                    <p class="role-badge"><i class="fa-solid fa-robot"></i> Official AI Assistant</p>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <p class="nav-title">QUICK EXPLORE</p>
+                <ul>
+                    <li><button class="nav-item-btn" data-topic="about"><i class="fa-solid fa-university"></i> About University</button></li>
+                    <li><button class="nav-item-btn" data-topic="admissions"><i class="fa-solid fa-clipboard-list"></i> Admission Process</button></li>
+                    <li><button class="nav-item-btn" data-topic="courses"><i class="fa-solid fa-book-open"></i> Courses Offered</button></li>
+                    <li><button class="nav-item-btn" data-topic="fees"><i class="fa-solid fa-indian-rupee-sign"></i> Fee Structure</button></li>
+                    <li><button class="nav-item-btn" data-topic="scholarships"><i class="fa-solid fa-award"></i> Scholarships</button></li>
+                    <li><button class="nav-item-btn" data-topic="placements"><i class="fa-solid fa-briefcase"></i> Placements & Career</button></li>
+                    <li><button class="nav-item-btn" data-topic="hostels"><i class="fa-solid fa-building-user"></i> Hostels & Living</button></li>
+                    <li><button class="nav-item-btn" data-topic="facilities"><i class="fa-solid fa-landmark"></i> Campus Facilities</button></li>
+                    <li><button class="nav-item-btn" data-topic="contact"><i class="fa-solid fa-address-book"></i> Contact Info</button></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-actions">
+                <button class="btn btn-primary btn-block" id="btnOpenApply"><i class="fa-solid fa-paper-plane"></i> Apply Now 2026</button>
+                <button class="btn btn-outline btn-block" id="btnOpenCallback"><i class="fa-solid fa-phone-volume"></i> Request Callback</button>
+                <button class="btn btn-secondary btn-block" id="btnOpenVisit"><i class="fa-solid fa-location-dot"></i> Visit Campus</button>
+            </div>
+
+            <div class="sidebar-footer">
+                <p><i class="fa-solid fa-shield-halved"></i> Accredited & State Private University</p>
+                <small>Bengaluru, Karnataka, India</small>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <!-- Header bar -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+                    <div class="header-title">
+                        <h1>Arya Assistant</h1>
+                        <span class="sub-badge"><i class="fa-solid fa-circle-check"></i> Verified Chanakya Bot</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="icon-action-btn" id="toggleTheme" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+                    <button class="icon-action-btn" id="toggleSound" title="Toggle Voice Sound"><i class="fa-solid fa-volume-high"></i></button>
+                    <button class="icon-action-btn" id="clearChat" title="Clear Chat History"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </header>
+
+            <!-- Campus Banner Bar -->
+            <div class="campus-hero-bar">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-tag">ADMISSIONS OPEN 2026-27</div>
+                    <h2>Transforming Education with Wisdom & Innovation</h2>
+                    <p>Rooted in Indian Knowledge Systems • Global Multidisciplinary Excellence</p>
+                </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-viewport" id="chatViewport">
+                <div class="messages-list" id="messagesList">
+                    <!-- Default Initial Welcome Message from Arya -->
+                </div>
+            </div>
+
+            <!-- Quick Action Chips Bar -->
+            <div class="quick-chips-container" id="quickChips">
+                <span class="chips-label"><i class="fa-solid fa-bolt"></i> Popular Questions:</span>
+                <div class="chips-scroll">
+                    <button class="chip-btn" data-query="Tell me about Chanakya University"><i class="fa-solid fa-university"></i> About Us</button>
+                    <button class="chip-btn" data-query="How to apply for admission?"><i class="fa-solid fa-compass"></i> Admissions</button>
+                    <button class="chip-btn" data-query="What courses are offered?"><i class="fa-solid fa-book"></i> Courses</button>
+                    <button class="chip-btn" data-query="What scholarships are available?"><i class="fa-solid fa-award"></i> Scholarships</button>
+                    <button class="chip-btn" data-query="How are the placements at Chanakya?"><i class="fa-solid fa-briefcase"></i> Placements</button>
+                    <button class="chip-btn" data-query="What are the hostel facilities?"><i class="fa-solid fa-house"></i> Hostels</button>
+                    <button class="chip-btn" data-query="How can I visit the campus?"><i class="fa-solid fa-map-location-dot"></i> Visit Campus</button>
+                    <button class="chip-btn" data-query="Give me contact information"><i class="fa-solid fa-headset"></i> Contact Us</button>
+                </div>
+            </div>
+
+            <!-- Input Controls -->
+            <div class="chat-input-container">
+                <form id="chatForm" class="chat-form">
+                    <input type="text" id="userInput" class="chat-input" placeholder="Ask Arya about courses, admissions, hostels, scholarships..." autocomplete="off">
+                    <button type="submit" class="send-btn" id="sendBtn" title="Send Message">
+                        <span>Send</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL 1: APPLY NOW -->
+    <div class="modal-backdrop" id="modalApply">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Chanakya University Application 2026</h3>
+                <button class="modal-close" data-close="modalApply"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="formApply">
+                    <div class="form-group">
+                        <label for="applicantName">Full Name *</label>
+                        <input type="text" id="applicantName" required placeholder="e.g. Rahul Sharma">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="applicantEmail">Email Address *</label>
+                            <input type="email" id="applicantEmail" required placeholder="rahul@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="applicantPhone">Phone Number *</label>
+                            <input type="tel" id="applicantPhone" required placeholder="+91 9876543210">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="programSelect">Program of Interest *</label>
+                        <select id="programSelect" required>
+                            <option value="">-- Select Degree Program --</option>
+                            <optgroup label="School of Engineering & Tech">
+                                <option value="B.Tech Computer Science">B.Tech - Computer Science & Engineering</option>
+                                <option value="B.Tech AI & Data Science">B.Tech - AI & Data Science</option>
+                            </optgroup>
+                            <optgroup label="School of Management & Commerce">
+                                <option value="BBA">BBA - General / Business Analytics</option>
+                                <option value="B.Com">B.Com - Honours / Accounting & Finance</option>
+                                <option value="MBA">MBA - Master of Business Administration</option>
+                            </optgroup>
+                            <optgroup label="School of Arts, Humanities & Social Sciences">
+                                <option value="BA Psychology">BA - Psychology / Applied Psychology</option>
+                                <option value="BA Public Policy">BA - Public Policy & Administration</option>
+                                <option value="MA International Relations">MA - International Relations</option>
+                            </optgroup>
+                            <optgroup label="School of Law">
+                                <option value="BA LLB">BA LL.B (Hons) - 5 Year Integrated</option>
+                                <option value="BBA LLB">BBA LL.B (Hons) - 5 Year Integrated</option>
+                            </optgroup>
+                            <optgroup label="School of Sciences">
+                                <option value="B.Sc Data Science">B.Sc - Data Science / Computer Science</option>
+                                <option value="B.Sc Biotechnology">B.Sc - Biotechnology</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantCity">City / State *</label>
+                        <input type="text" id="applicantCity" required placeholder="e.g. Bengaluru, Karnataka">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit Direct Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: REQUEST CALLBACK -->
+    <div class="modal-backdrop" id="modalCallback">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-phone-volume"></i> Request Admissions Callback</h3>
+                <button class="modal-close" data-close="modalCallback"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="formCallback">
+                    <div class="form-group">
+                        <label for="cbName">Your Name *</label>
+                        <input type="text" id="cbName" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="cbPhone">Phone Number *</label>
+                        <input type="tel" id="cbPhone" required placeholder="+91 Mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label for="cbTime">Preferred Callback Time *</label>
+                        <select id="cbTime" required>
+                            <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                            <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                            <option value="Evening (4 PM - 7 PM)">Evening (4 PM - 7 PM)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cbQuery">Any Specific Inquiry?</label>
+                        <textarea id="cbQuery" rows="3" placeholder="Scholarship eligibility, hostel fees, entrance exam..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Request Instant Call</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: VISIT CAMPUS -->
+    <div class="modal-backdrop" id="modalVisit">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-location-dot"></i> Schedule Campus Guided Tour</h3>
+                <button class="modal-close" data-close="modalVisit"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro">Explore our 100+ acre state-of-the-art Global Campus near Devanahalli, Bengaluru!</p>
+                <form id="formVisit">
+                    <div class="form-group">
+                        <label for="visitName">Visitor Name *</label>
+                        <input type="text" id="visitName" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="visitPhone">Phone *</label>
+                            <input type="tel" id="visitPhone" required placeholder="+91 Contact No.">
+                        </div>
+                        <div class="form-group">
+                            <label for="visitDate">Preferred Date *</label>
+                            <input type="date" id="visitDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="visitGuests">Number of Visitors</label>
+                        <input type="number" id="visitGuests" min="1" max="10" value="2">
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-block">Book Campus Tour</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
